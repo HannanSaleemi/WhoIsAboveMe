@@ -40,8 +40,6 @@ def index():
         else:
             aircraft_info["Alt_Geom"] = ""
 
-        ## SPEEDS
-
         # Ground Speed
         if (item.get("gs")):
             aircraft_info["GS"] = item["gs"]
@@ -166,7 +164,7 @@ def index():
             aircraft_info["Seen"] = ""
 
         response.append(aircraft_info)
-    return json.dumps(response)
+    return jsonify(response)
 
 
 if __name__ == '__main__':
