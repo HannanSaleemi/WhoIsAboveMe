@@ -65,7 +65,6 @@ def index():
             aircraft_info["MACH"] = ""
 
         # Track - True Track over ground in degrees (0-359)
-        # TODO - Set Track to 0 when no track found?
         if (item.get("track")):
             aircraft_info["Track"] = item["track"]
         else:
