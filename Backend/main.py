@@ -145,7 +145,7 @@ def index():
         # Latitude and Longitude
         if (item.get("lat") and item.get("lon")):
             aircraft_info["Lat"] = item["lat"]
-            aircraft_info["Lon"] = item["Lon"]
+            aircraft_info["Lon"] = item["lon"]
         else:
             aircraft_info["Lat"] = ""
             aircraft_info["Lon"] = ""
