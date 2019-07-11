@@ -11,3 +11,8 @@
 - Building the Backend:
   - `docker build -f baclend.Dockerfile .`
   - `docker run -p 5001:5000 <DOCKER CONTAINER ID HERE>`
+
+### Docker Compose - Building all Services
+
+- Bulding is all:
+  - `docker-compose up --build`
