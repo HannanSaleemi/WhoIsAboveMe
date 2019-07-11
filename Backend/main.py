@@ -6,12 +6,14 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/api/v1/flights/getAllFlightInfo')
 def index():
 
     response = []
 
-    r = requests.get("http://192.168.1.17/dump1090-fa/data/aircraft.json")
+    r = requests.get(
+        "http://flightaware.ddns.net/dump1090-fa/data/aircraft.json"
+    )
     flight_info = json.loads(r.text)
     aircraft = flight_info["aircraft"]
     print("Aircraft: " + str(len(aircraft)))
@@ -167,4 +169,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
