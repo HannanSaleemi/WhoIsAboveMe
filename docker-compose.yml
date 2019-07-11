@@ -1,0 +1,19 @@
+# Version of the docker compose we want to use
+version: '3'
+
+# Services / Conatiners i would like to be built
+services:
+  # Name of container
+  whoisaboveme-frontend:
+    build:
+      context: .
+      dockerfile: Frontend/Dockerfile
+    ports:
+      - "3001:3000"
+  
+  whoisaboveme-api:
+    build:
+      context: .
+      dockerfile: Backend/Dockerfile
+    ports:
+      - "5001:5000"
