@@ -16,3 +16,7 @@
 
 - Bulding is all:
   - `docker-compose up --build`
+
+- Ports:
+  - `3001` is for Frontend
+  - `5001` is for Backend
