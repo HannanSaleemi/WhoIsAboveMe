@@ -9,7 +9,7 @@
   - `docker run -p 3001:3000 <DOCKER CONTAINER ID HERE>`
 
 - Building the Backend:
-  - `docker build -f baclend.Dockerfile .`
+  - `docker build -f backend.Dockerfile .`
   - `docker run -p 5001:5000 <DOCKER CONTAINER ID HERE>`
 
 ### Docker Compose - Building all Services

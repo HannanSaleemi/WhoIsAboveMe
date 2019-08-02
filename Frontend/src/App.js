@@ -12,7 +12,7 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    fetch("http://flightaware.ddns.net/dump1090-fa/data/aircraft.json")
+    fetch("http://whoisaboveme-api/api/v1/flights/getAllFlightInfo")
     .then(response => response.json())
     .then(data => console.log(data))
   }

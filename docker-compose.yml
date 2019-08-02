@@ -17,3 +17,5 @@ services:
       dockerfile: Backend/Dockerfile
     ports:
       - "5001:5000"
+    environment:
+      - ENVIRONMENT=dev

@@ -1,9 +1,12 @@
 #!flask/bin/python
 from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
 import requests
 import json
 
 app = Flask(__name__)
+# app.config['CORS_HEADERS'] = "Content-Type"
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 @app.route('/api/v1/flights/getAllFlightInfo')
@@ -165,7 +168,9 @@ def index():
             aircraft_info["Seen"] = ""
 
         response.append(aircraft_info)
-    return jsonify(response)
+        api_response = jsonify(response)
+        api_response.headers.add("Access-Control-Allow-Origin", "*")
+    return 
 
 
 if __name__ == '__main__':
