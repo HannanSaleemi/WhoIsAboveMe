@@ -7,17 +7,35 @@ class Map extends Component {
   constructor(props){
     super(props)
     this.state = {
-      "position": [51.533128, 0.113951]
+      "position": [51.533128, 0.113951],
+      "flights": null
     }
   }
 
   componentDidMount() {
     fetch("http://0.0.0.0:5001/api/v1/flights/getAllFlightInfo")
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => this.setState({
+      "flights": data
+    }))
   }
 
   render() {
+
+    var flightLocations = []
+    var renderMarkers;
+    if(this.state.flights) {
+      renderMarkers = this.state.flights.map((flight) => {
+        return (
+          <Marker position={[flight.Lat, flight.Lon]}>
+            <Popup>
+              Info
+            </Popup>
+          </Marker>
+        )
+      })
+    }
+
     return (
       <LeafletMap
         center={this.state.position}
@@ -34,11 +52,7 @@ class Map extends Component {
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         />
-        <Marker position={this.state.position}>
-          <Popup>
-            Popup for any custom information.
-          </Popup>
-        </Marker>
+        {renderMarkers}
       </LeafletMap>
     );
   }
