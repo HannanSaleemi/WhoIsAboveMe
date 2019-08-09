@@ -12,7 +12,7 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    fetch("http://whoisaboveme-api/api/v1/flights/getAllFlightInfo")
+    fetch("http://0.0.0.0:5001/api/v1/flights/getAllFlightInfo")
     .then(response => response.json())
     .then(data => console.log(data))
   }
