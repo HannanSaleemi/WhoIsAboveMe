@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+// import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import "../assets/styles/_flightmap.scss";
 
 export default class FlightMap extends Component {
@@ -27,31 +28,45 @@ export default class FlightMap extends Component {
             renderMarkers = this.state.flights.map((flight) => {
                 console.log(flight)
                 return (
-                <Marker position={[flight.Lat, flight.Lon]}>
-                    <Popup>
-                    Flight: {flight.Flight}
-                    <br/>
-                    ICAO: {flight.ICAO}
-                    </Popup>
-                </Marker>
+                    <Marker position={[flight.Lat, flight.Lon]}>
+                        <Popup>
+                            Flight: {flight.Flight}
+                            <br/>
+                            ICAO: {flight.ICAO}
+                        </Popup>
+                    </Marker>
                 )
             })
         }
 
         return (
-            <div className="leaflet-container">
+            <div>
 
+                <Map
+                    center={this.state.position}
+                    zoom="12"
+                >
+                    <TileLayer
+                        attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                        url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+                    />
+
+                    {renderMarkers}
+
+                </Map>
+
+                {/*
                 <LeafletMap
-                center={this.state.position}
-                zoom={10}
-                maxZoom={18}
-                attributionControl={true}
-                zoomControl={true}
-                doubleClickZoom={false}
-                scrollWheelZoom={false}
-                dragging={true}
-                animate={true}
-                easeLinearity={0.35}
+                    center={this.state.position}
+                    zoom={10}
+                    maxZoom={18}
+                    attributionControl={true}
+                    zoomControl={true}
+                    doubleClickZoom={false}
+                    scrollWheelZoom={false}
+                    dragging={true}
+                    animate={true}
+                    easeLinearity={0.35}
                 >
 
                 <TileLayer
@@ -62,6 +77,8 @@ export default class FlightMap extends Component {
                 {renderMarkers}
 
                 </LeafletMap>
+                */}
+
             </div>
         )
     }

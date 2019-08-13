@@ -21,9 +21,16 @@ export default class Header extends Component {
                         </div>
 
                         <div className="float-r">
-                            <div className="header-utc-time">
-                                UTC {this.getCurrentUTCTime()}
+                            <div className="flex-row-container">
+                                <div className="header-plane-stats">
+                                    IN AIR: 000
+                                </div>
+                                
+                                <div className="header-utc-time">
+                                    UTC {this.getCurrentUTCTime()}
+                                </div>
                             </div>
+                            
                         </div>
                     </div>
                 </header>

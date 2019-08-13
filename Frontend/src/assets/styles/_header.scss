@@ -2,7 +2,6 @@
 
 .main-header {
     font-family: "Avenir Next", "sans-serif";
-    max-width: 1720px;
     left: 0;
     position: fixed;
     top: 0;
@@ -28,4 +27,13 @@
 
 .header-utc-time {
     padding: 18px;
+}
+
+.header-plane-stats {
+    padding: 18px;
+}
+
+.flex-row-container {
+    display: flex;
+    flex-direction: row;
 }
