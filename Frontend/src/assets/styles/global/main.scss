@@ -1,0 +1,10 @@
+@import "../global/colours";
+@import "../header";
+@import "../app";
+@import "../flightmap";
+
+.custom-container {
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 0 20px;
+}

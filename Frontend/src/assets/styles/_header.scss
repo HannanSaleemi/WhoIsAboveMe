@@ -1,0 +1,31 @@
+@import "./global/colours";
+
+.main-header {
+    font-family: "Avenir Next", "sans-serif";
+    max-width: 1720px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    color: #FFF;
+    background-color: $header-background;
+}
+
+.logo-wrap {
+    float: left;
+}
+
+.logo {
+    font-size: 20px;
+    padding: 18px;
+    display: inline-block;
+}
+
+.float-r {
+    float: right;
+}
+
+.header-utc-time {
+    padding: 18px;
+}
