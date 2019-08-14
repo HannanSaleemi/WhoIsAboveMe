@@ -16,7 +16,17 @@
 
 - Bulding is all:
   - `docker-compose up --build`
+  - To run in background `docker-compose up --build -d`
 
 - Ports:
   - `3001` is for Frontend
   - `5001` is for Backend
+  - `3307` is for DB
+
+- Shutting down properly:
+  - `docker ps -a` to show all containers running or stopped
+  - `docker stop <CONTAINER IDS>` for all containers
+  - Use container IDs to remove EG) `docker rm <CONTAINER_IDS>`
+
+- When all else fails:
+  - `docker system prune`
