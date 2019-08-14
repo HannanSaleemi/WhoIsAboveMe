@@ -1,11 +1,35 @@
 #!flask/bin/python
+import pymysql
+pymysql.install_as_MySQLdb()
+import MySQLdb
 from flask import Flask, jsonify
 from flask_cors import CORS
 import requests
 import json
+import logging
 
 app = Flask(__name__)
 CORS(app)
+
+
+@app.route('/api/v1/flights/addFlight')
+def addFlight():
+    db = MySQLdb.connect(
+        host="db",
+        user="root",
+        passwd="password",
+        db="WhoIsAboveMe"
+    )
+    cursor = db.cursor()
+    try:
+        cursor.execute("SELECT * FROM Flight")
+        results = cursor.fetchone()
+        print(results)
+        logging.error(results)
+    except Exception as e:
+        print("DB Error: {}".format(e))
+    db.close()
+    return "200"
 
 
 @app.route('/api/v1/flights/getAllFlightInfo')
