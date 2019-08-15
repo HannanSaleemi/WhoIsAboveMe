@@ -14,4 +14,4 @@ COPY ./Backend /app
 
 ENTRYPOINT [ "python" ]
 
-CMD [ "main.py" ]
+CMD [ "main.py"]

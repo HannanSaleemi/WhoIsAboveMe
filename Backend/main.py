@@ -25,7 +25,7 @@ def addFlight():
         cursor.execute("SELECT * FROM Flight")
         results = cursor.fetchone()
         print(results)
-        logging.error(results)
+        logging.info(results)
     except Exception as e:
         print("DB Error: {}".format(e))
     db.close()
