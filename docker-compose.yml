@@ -17,10 +17,11 @@ services:
       context: .
       dockerfile: Backend/Dockerfile
     ports:
-      - "5001:5000"
+      - "5001:5001"
     environment:
       - ENVIRONMENT=dev
   
+  # Celery Task Queue
   redis:
     image: redis
     ports:
@@ -28,6 +29,15 @@ services:
     expose:
       - '6379'
 
+  # Celery Worker
+  worker:
+    build:
+      context: .
+      dockerfile: Celery-Queue/Dockerfile
+    depends_on:
+      - redis
+
+  # DB for Flights - Persistent store on device
   db:
     image: mysql:5.7
     restart: always

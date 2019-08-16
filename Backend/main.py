@@ -7,9 +7,19 @@ from flask_cors import CORS
 import requests
 import json
 import logging
+from worker import celery
 
 app = Flask(__name__)
 CORS(app)
+
+
+@app.route('/add/<int:param1>/<int:param2>')
+def add(param1, param2):
+    task = celery.send_task('tasks.add', args=[param1, param2], kwargs={})
+    res = celery.AsyncResult(task.id)
+    return jsonify({
+        str(task.id): str(res.state)
+    })
 
 
 @app.route('/api/v1/flights/addFlight')
@@ -194,5 +204,5 @@ def index():
     return jsonify(response)
 
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+# if __name__ == '__main__':
+#     app.run(debug=True, host='0.0.0.0')
